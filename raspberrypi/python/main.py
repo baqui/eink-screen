@@ -38,9 +38,18 @@ def main():
     epd.init()
 
     # For simplicity, the arguments are explicit numerical coordinates
+    image = Image.new('L', (EPD_WIDTH, EPD_HEIGHT), 255)    # 255: clear the frame
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 55)
+    draw.text((200, 100), 'I', font = font, fill = 255)
+    draw.text((200, 200), 'LOVE', font = font, fill = 255)
+    draw.text((200, 300), 'DICKS', font = font, fill = 255)
+    epd.display_frame(epd.get_frame_buffer(image))
+
+
     # image = Image.new('L', (EPD_WIDTH, EPD_HEIGHT), 255)    # 255: clear the frame
     # draw = ImageDraw.Draw(image)
-    # font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 24)
+    # font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 55)
     # draw.rectangle((0, 6, 640, 40), fill = 127)
     # draw.text((200, 10), 'e-Paper demo', font = font, fill = 255)
     # draw.rectangle((200, 80, 600, 280), fill = 127)
@@ -49,8 +58,8 @@ def main():
     # draw.chord((40, 80, 180, 220), 0, 360, fill = 127)
     # epd.display_frame(epd.get_frame_buffer(image))
 
-    image = Image.open('640x384xCarbon.bmp')
-    epd.display_frame(epd.get_frame_buffer(image))
+    # image = Image.open('640x384xCarbon.bmp')
+    # epd.display_frame(epd.get_frame_buffer(image))
 
     # You can get frame buffer from an image or import the buffer directly:
     #epd.display_frame(imagedata.MONOCOLOR_BITMAP)
