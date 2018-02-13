@@ -41,9 +41,9 @@ def main():
     image = Image.new('L', (EPD_WIDTH, EPD_HEIGHT), 255)    # 255: clear the frame
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 55)
-    draw.text((200, 100), 'I', font = font, fill = (255,20,21,255))
-    draw.text((200, 200), 'LOVE', font = font, fill = (255,20,21,255))
-    draw.text((200, 300), 'DICKS', font = font, fill = (255,20,21,255))
+    draw.text((200, 100), 'I', font = font, fill = 0)
+    draw.text((200, 200), 'LOVE', font = font, fill = 0)
+    draw.text((200, 300), 'DICKS', font = font, fill = 0)
     epd.display_frame(epd.get_frame_buffer(image))
 
 
