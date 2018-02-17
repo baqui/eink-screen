@@ -12,7 +12,7 @@ import os
 
 skm_from = '6064' #Gdynia Leszcznki
 skm_to = '7567' #Gdańsk śródmieście
-skm_date = '17  Luty, 2018'
+skm_date = '18  Luty, 2018'
 skm_hour = '00:06'
 
 url_base = 'http://www.skm.pkp.pl/pelny-rozklad-jazdy/'
