@@ -101,7 +101,11 @@ def main():
             x = (col_w + 1) * col
             x += cal_x + 1
             number = 'S' + number if col == 1 else number
-            print_digit((x+3, y+3), number, 127 if col == 1 else 0)
+            if int(train[1]) == 1:
+                draw.rectangle((x, y, x + col_w - 1, y + col_h - 1), fill=127)
+                print_digit((x+3, y+3), number, 255)
+            else:
+                print_digit((x+3, y+3), number, 127 if col == 1 else 0)
 
     epd.display_frame(epd.get_frame_buffer(image))
 

@@ -95,7 +95,11 @@ for row, train in enumerate(closest_trains):
         x = (col_w + 1) * col
         x += cal_x + 1
         number = number if int(number) >= 10 else '0' + str(int(number))
-        print_number((x+3, y+3), number, inkyphat.RED if col == 2 else inkyphat.WHITE)
+        if int(train[2]) == 1:
+            draw.rectangle((x, y, x + col_w - 1, y + col_h - 1), fill=127)
+            print_number((x+3, y+3), number, 255 if col == 2 else 0)
+        else:
+            print_number((x+3, y+3), number, 0 if col == 2 else 127)
 
 # And show it!
 inkyphat.show()
