@@ -7,7 +7,7 @@ import datetime
 import os
 
 skm_data = []
-skm_timetable_file = os.path.abspath("/home/pi/eink-screen/raspberrypi/python/skm.csv")
+skm_timetable_file = os.path.abspath("/home/pi/eink/raspberrypi/python/skm.csv")
 
 with open(skm_timetable_file,'r') as f1:
     reader = csv.reader(f1, delimiter='\t',lineterminator='\n',)

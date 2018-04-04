@@ -30,7 +30,8 @@ import ImageDraw
 import ImageFont
 import csv
 import os
-#import imagedata
+from datetime import datetime
+import RPi.GPIO as GPIO
 
 EPD_WIDTH = 640
 EPD_HEIGHT = 384
@@ -39,10 +40,18 @@ def main():
     epd = epd7in5b.EPD()
     epd.init()
 
-    skm_timetable_file = os.path.abspath("/home/pi/eink-screen/raspberrypi/python/skm.csv")
+    day_number = datetime.today().weekday()
+    days = ["Poniedzialek", "Wtorek", "Sroda", "Czwartek", "Piatek", "Weekend", "Weekend"]
+    day_info = "{}".format(days[day_number])
+
+    print day_info
+
+    skm_timetable_file = os.path.abspath("/home/pi/eink/raspberrypi/python/skm.csv")
     image = Image.new('L', (EPD_WIDTH, EPD_HEIGHT), 255)    # 255: clear the frame
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 35)
+
+    day_font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 38)
 
     col_w = 120
     col_h = 39
@@ -107,7 +116,11 @@ def main():
             else:
                 print_digit((x+3, y+3), number, 127 if col == 1 else 0)
 
+    draw.text((20, 20), day_info, font = day_font, fill = 0)
+
     epd.display_frame(epd.get_frame_buffer(image))
+
+    GPIO.cleanup()
 
 if __name__ == '__main__':
     main()

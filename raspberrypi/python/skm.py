@@ -12,8 +12,8 @@ import os
 
 skm_from = '6064' #Gdynia Leszcznki
 skm_to = '7567' #Gdańsk śródmieście
-skm_date = '2018-02-19'
-skm_hour = datetime.today().strftime('%Y-%m-%d')
+skm_date = datetime.today().strftime('%Y-%m-%d')
+skm_hour = '00:00'
 
 url_base = 'https://skm.trojmiasto.pl/rozklad/'
 quote = '?from={0}&to={1}&date_mode=1&date={2}&hour={3}&via1=0&via2=0&time_min=&time_max='
@@ -25,7 +25,7 @@ soup = BeautifulSoup(page, 'html.parser')
 
 elements = soup.find_all('div', attrs={'class': 'timetable'})
 
-skm_timetable_file = os.path.abspath("/home/pi/eink-screen/raspberrypi/python/skm.csv")
+skm_timetable_file = os.path.abspath("/home/pi/eink/raspberrypi/python/skm.csv")
 
 with open(skm_timetable_file,'w') as f1:
     writer=csv.writer(f1, delimiter='\t',lineterminator='\n',)
